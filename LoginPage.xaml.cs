@@ -86,6 +86,10 @@ namespace Twitter_2
             {
                 this.dados.user = this.user;
                 this.dados.password = pWord;
+
+                entradaUsuario.Text = "Usuário";
+                entradaSenha.Text = "Senha";
+
                 this.NavigationService.Navigate(feed);
             }
             else
@@ -94,6 +98,38 @@ namespace Twitter_2
                 string titulo = "Login";
                 MessageBoxButton botao = MessageBoxButton.OK;
                 MessageBox.Show(mensagem, titulo, botao);
+            }
+        }
+
+        private void zerarInput1(object sender, RoutedEventArgs e)
+        {
+            if (entradaUsuario.Text == "Usuário")
+            {
+                entradaUsuario.Text = "";
+            }
+        }
+
+        private void zerarInput2(object sender, RoutedEventArgs e)
+        {
+            if (entradaSenha.Text == "Senha")
+            {
+                entradaSenha.Text = "";
+            }
+        }
+
+        private void entradaUsuario_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (entradaUsuario.Text == "")
+            {
+                entradaUsuario.Text = "Usuário";
+            }
+        }
+
+        private void entradaSenha_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (entradaSenha.Text == "")
+            {
+                entradaSenha.Text = "Senha";
             }
         }
     }

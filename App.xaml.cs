@@ -13,6 +13,5 @@ namespace Twitter_2
     /// </summary>
     public partial class App : Application
     {
-        public List<User> conta = new List<User>();
     }
 }

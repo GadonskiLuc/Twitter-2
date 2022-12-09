@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+//using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -27,9 +28,23 @@ namespace Twitter_2
             this.dados = dados;
         }
 
-        private void lu_Loaded(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            lu.Content = this.dados.Contas[this.dados.posConta].name;
+
+        }
+
+        private void botaoSair_Click(object sender, RoutedEventArgs e)
+        {
+            string mensagem = "Tem Certeza?";
+            string titulo = "Confirmação";
+            MessageBoxButton botao = MessageBoxButton.YesNo;
+            MessageBoxResult resultado;
+            resultado = MessageBox.Show(mensagem, titulo, botao,MessageBoxImage.None,MessageBoxResult.No);
+            
+            if(resultado== MessageBoxResult.Yes)
+            {
+                this.NavigationService.GoBack();
+            }
         }
     }
 }

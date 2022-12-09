@@ -8,8 +8,27 @@
       d:DesignHeight="600" d:DesignWidth="1200"
       Title="FeedPage">
 
-    <Grid>
-        <Label x:Name="lu" Content="texto" HorizontalAlignment="Left" Margin="451,190,0,0" VerticalAlignment="Top" Foreground="White" FontSize="72" Loaded="lu_Loaded"/>
-
+    <Grid Background="Black">
+        <Rectangle HorizontalAlignment="Left" Height="600" Margin="300,0,0,0" Stroke="White" VerticalAlignment="Center" Width="0.5" OpacityMask="White" Fill="White"/>
+        <Image x:Name="Logo" HorizontalAlignment="Left" Height="42" Margin="50,35,0,0" VerticalAlignment="Top" Width="47" Source="/Twitter-logo.svg.png">
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="/Twitter-logo.svg.png" Stretch="Uniform"/>
+            </Image.OpacityMask>
+        </Image>
+        <Image HorizontalAlignment="Left" Height="25" Margin="50,116,0,0" VerticalAlignment="Top" Width="25" Source="/botao-home.png">
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="/botao-home.png" Stretch="Uniform"/>
+            </Image.OpacityMask>
+        </Image>
+        <Image HorizontalAlignment="Left" Height="25" Margin="50,195,0,0" VerticalAlignment="Top" Width="25" Source="/user.png">
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="/user.png" Stretch="Uniform"/>
+            </Image.OpacityMask>
+        </Image>
+        <Image HorizontalAlignment="Left" Height="25" Margin="51,275,0,0" VerticalAlignment="Top" Width="25" Source="/close.png"/>
+        <Button x:Name="botaoHome" Content="       Home" HorizontalAlignment="Left" Margin="50,100,0,0" VerticalAlignment="Top" Height="55" Width="200" BorderBrush="Black" Background="{x:Null}" Foreground="White" FontSize="20" FontWeight="Bold" Click="Button_Click" HorizontalContentAlignment="Left"/>
+        <Button x:Name="botaoPerfil" Content="       Perfil" HorizontalAlignment="Left" Margin="50,180,0,0" VerticalAlignment="Top" Height="55" Width="200" BorderBrush="Black" Background="{x:Null}" Foreground="White" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Left"/>
+        <Button x:Name="botaoSair" Content="       Sair" HorizontalAlignment="Left" Margin="50,260,0,0" VerticalAlignment="Top" Height="55" Width="200" BorderBrush="Black" Foreground="White" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Left" Background="{x:Null}" Click="botaoSair_Click"/>
+        <Button x:Name="botaoTweet" Content="Tweetar" HorizontalAlignment="Left" Margin="50,340,0,0" VerticalAlignment="Top" Height="55" Width="200" BorderBrush="Black" Background="#FF1DA1F2" Foreground="White" FontSize="20" FontWeight="Bold"/>
     </Grid>
 </Page>
