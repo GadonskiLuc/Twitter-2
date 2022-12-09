@@ -20,11 +20,13 @@ namespace Twitter_2
     /// </summary>
     public partial class LoginPage : Page
     {
-        public int posConta = 0;
+        int posConta = 0;
 
         string pWord;
 
-        public string user;
+        string user;
+
+        string name;
 
         public FeedPage feed;
 
@@ -130,6 +132,103 @@ namespace Twitter_2
             if (entradaSenha.Text == "")
             {
                 entradaSenha.Text = "Senha";
+            }
+        }
+
+        private void criarConta_MouseEnter(object sender, MouseEventArgs e)
+        {
+            criarConta.Opacity = 0.5;
+        }
+
+        private void criarConta_MouseLeave(object sender, MouseEventArgs e)
+        {
+            criarConta.Opacity = 1;
+        }
+        private void entradaNome_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            this.name = entradaNome.Text;
+        }
+
+        private void criarConta_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            entradaNome.IsEnabled= true;
+            entradaNome.Visibility= Visibility.Visible;
+            botaoEntrar.IsEnabled= false;
+            botaoEntrar.Visibility= Visibility.Hidden;
+
+            botaoCadastrar.IsEnabled= true;
+            botaoCadastrar.Visibility=Visibility.Visible;
+        }
+
+        private void zerarInput3(object sender, RoutedEventArgs e)
+        {
+            if (entradaNome.Text == "Nome")
+            {
+                entradaNome.Text = "";
+            }
+        }
+
+        private void entradaNome_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (entradaNome.Text == "")
+            {
+                entradaNome.Text = "Nome";
+            }
+        }
+
+        private void botaoCadastrar_Click(object sender, RoutedEventArgs e)
+        {
+            if(entradaNome.Text == "" || entradaUsuario.Text == "" || entradaSenha.Text == "" || entradaNome.Text == "Nome" || entradaUsuario.Text == "Usuário" || entradaSenha.Text == "Senha")
+            {
+                string msg = "Campos Vazios!!";
+                string title = "Login";
+                MessageBoxButton btn = MessageBoxButton.OK;
+                MessageBoxImage icn = MessageBoxImage.Exclamation;
+                MessageBox.Show(msg, title, btn, icn, MessageBoxResult.OK);
+            }
+            else
+            {
+                string mensagem = "Desejas criar essa conta?";
+                string titulo = "Login";
+                MessageBoxButton botao = MessageBoxButton.YesNo;
+                MessageBoxImage icon = MessageBoxImage.Question;
+                MessageBoxResult result;
+                result = MessageBox.Show(mensagem, titulo, botao, icon, MessageBoxResult.Yes);
+
+                if (result == MessageBoxResult.Yes)
+                {   
+                    this.dados.Contas.Add(new User { 
+                        name= this.name,
+                        username=this.user,
+                        password=this.pWord
+                    });
+
+                    entradaNome.IsEnabled = false;
+                    entradaNome.Visibility = Visibility.Hidden;
+                    botaoEntrar.IsEnabled = true;
+                    botaoEntrar.Visibility = Visibility.Visible;
+
+                    botaoCadastrar.IsEnabled = false;
+                    botaoCadastrar.Visibility = Visibility.Hidden;
+
+                    entradaUsuario.Text = "Usuário";
+                    entradaSenha.Text = "Senha";
+                    entradaNome.Text = "Nome";
+                }
+                else
+                {
+                    entradaNome.IsEnabled = false;
+                    entradaNome.Visibility = Visibility.Hidden;
+                    botaoEntrar.IsEnabled = true;
+                    botaoEntrar.Visibility = Visibility.Visible;
+
+                    botaoCadastrar.IsEnabled = false;
+                    botaoCadastrar.Visibility = Visibility.Hidden;
+
+                    entradaUsuario.Text= "Usuário";
+                    entradaSenha.Text= "Senha";
+                    entradaNome.Text= "Nome";
+                }
             }
         }
     }
