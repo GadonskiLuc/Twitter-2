@@ -1,6 +1,6 @@
 #Twitter 2
 
-Digamos que seja uma continuação espiritual de https://github.com/GadonskiLuc/Twitter-no-CMD .
+Digamos que seja uma continuação espiritual de `https://github.com/GadonskiLuc/Twitter-no-CMD`.
 A ideia é a mesma, mas agora em um aplicativo WPF, um pouco mais bonito e com algumas features adicionais
 
 ##Aviso Triste(por enquanto)
