@@ -5,11 +5,10 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Twitter_2"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="1200"
+      d:DesignHeight="600" d:DesignWidth="1000"
       Title="FeedPage">
 
     <Grid Background="Black">
-        <Rectangle HorizontalAlignment="Left" Height="600" Margin="300,0,0,0" Stroke="White" VerticalAlignment="Center" Width="0.5" OpacityMask="White" Fill="White"/>
         <Image x:Name="Logo" HorizontalAlignment="Left" Height="42" Margin="50,35,0,0" VerticalAlignment="Top" Width="47" Source="/Twitter-logo.svg.png">
             <Image.OpacityMask>
                 <ImageBrush ImageSource="/Twitter-logo.svg.png" Stretch="Uniform"/>
@@ -26,9 +25,24 @@
             </Image.OpacityMask>
         </Image>
         <Image HorizontalAlignment="Left" Height="25" Margin="51,275,0,0" VerticalAlignment="Top" Width="25" Source="/close.png"/>
-        <Button x:Name="botaoHome" Content="       Home" HorizontalAlignment="Left" Margin="50,100,0,0" VerticalAlignment="Top" Height="55" Width="200" BorderBrush="Black" Background="{x:Null}" Foreground="White" FontSize="20" FontWeight="Bold" Click="Button_Click" HorizontalContentAlignment="Left"/>
-        <Button x:Name="botaoPerfil" Content="       Perfil" HorizontalAlignment="Left" Margin="50,180,0,0" VerticalAlignment="Top" Height="55" Width="200" BorderBrush="Black" Background="{x:Null}" Foreground="White" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Left"/>
+        <Button x:Name="botaoHome" Content="       Home" HorizontalAlignment="Left" Margin="50,100,0,0" VerticalAlignment="Top" Height="55" Width="200" BorderBrush="Black" Background="{x:Null}" Foreground="White" FontSize="20" FontWeight="Bold" Click="botaoHome_Click" HorizontalContentAlignment="Left"/>
+        <Button x:Name="botaoPerfil" Content="       Perfil" HorizontalAlignment="Left" Margin="50,180,0,0" VerticalAlignment="Top" Height="55" Width="200" BorderBrush="Black" Background="{x:Null}" Foreground="White" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Left" Click="botaoPerfil_Click"/>
         <Button x:Name="botaoSair" Content="       Sair" HorizontalAlignment="Left" Margin="50,260,0,0" VerticalAlignment="Top" Height="55" Width="200" BorderBrush="Black" Foreground="White" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Left" Background="{x:Null}" Click="botaoSair_Click"/>
         <Button x:Name="botaoTweet" Content="Tweetar" HorizontalAlignment="Left" Margin="50,340,0,0" VerticalAlignment="Top" Height="55" Width="200" BorderBrush="Black" Background="#FF1DA1F2" Foreground="White" FontSize="20" FontWeight="Bold"/>
+        <Rectangle x:Name="profileWallpaper" HorizontalAlignment="Left" Height="260" Margin="300,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="701" StrokeThickness="0.5">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/shrekwallpaper.jpg"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Ellipse x:Name="userImage" HorizontalAlignment="Left" Height="148" Margin="346,186,0,0" Stroke="Black" VerticalAlignment="Top" Width="154" StrokeThickness="2">
+            <Ellipse.Fill>
+                <ImageBrush ImageSource="/b3b.gif" Stretch="Fill"/>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Rectangle HorizontalAlignment="Left" Height="600" Margin="300,0,0,0" Stroke="White" VerticalAlignment="Center" Width="0.5" OpacityMask="White" Fill="White"/>
+        <Label x:Name="labelNome" Content="Username" HorizontalAlignment="Left" Margin="346,347,0,0" VerticalAlignment="Top" Foreground="White" FontSize="24" FontWeight="Bold"/>
+        <Label x:Name="labelUser" Content="@user" HorizontalAlignment="Left" Margin="346,373,0,0" VerticalAlignment="Top" Foreground="#FF3C3C3C" FontSize="16"/>
+        <TextBlock x:Name="profileBio" HorizontalAlignment="Left" Margin="352,430,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Height="73" Width="330" FontSize="18" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ma" Loaded="profileBio_Loaded"/>
+        <Button x:Name="botaoEditar" Content="Editar Perfil" HorizontalAlignment="Left" Margin="848,280,0,0" VerticalAlignment="Top" FontSize="18" BorderThickness="1,1,1,1" Foreground="White" Background="Black" BorderBrush="#FF3C3C3C" Width="120" Height="40"/>
     </Grid>
 </Page>

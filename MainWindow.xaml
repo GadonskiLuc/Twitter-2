@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Twitter_2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1200">
+        Title="MainWindow" Height="600" Width="1000">
     <Grid Background="#FF363636">
         <Frame x:Name="Pagina" Content="Frame" NavigationUIVisibility="Hidden" Loaded="Pagina_Loaded"/>
 

@@ -22,14 +22,16 @@ namespace Twitter_2
     public partial class FeedPage : Page
     {
         Dados dados;
+
         public FeedPage(Dados dados)
         {
             InitializeComponent();
+            homePage();
             this.dados = dados;
-        }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
+            labelNome.Content = this.dados.Contas[this.dados.posConta].name;
+            labelUser.Content = $"@{this.dados.Contas[this.dados.posConta].username}";
+            profileBio.Text= this.dados.Contas[this.dados.posConta].bio;
 
         }
 
@@ -44,6 +46,48 @@ namespace Twitter_2
             if(resultado== MessageBoxResult.Yes)
             {
                 this.NavigationService.GoBack();
+            }
+        }
+
+        private void botaoPerfil_Click(object sender, RoutedEventArgs e)
+        {
+            perfilPage();
+
+        }
+
+        private void perfilPage()
+        {
+            labelNome.Visibility = Visibility.Visible;
+            labelUser.Visibility = Visibility.Visible;
+            profileBio.Visibility = Visibility.Visible;
+            profileWallpaper.Visibility = Visibility.Visible;
+            userImage.Visibility = Visibility.Visible;
+
+            botaoEditar.Visibility = Visibility.Visible;
+            botaoEditar.IsEnabled= true;
+        }
+        private void homePage()
+        {
+            labelNome.Visibility = Visibility.Hidden;
+            labelUser.Visibility = Visibility.Hidden;
+            profileBio.Visibility = Visibility.Hidden;
+            profileWallpaper.Visibility = Visibility.Hidden;
+            userImage.Visibility = Visibility.Hidden;
+
+            botaoEditar.Visibility = Visibility.Hidden;
+            botaoEditar.IsEnabled = false;
+        }
+
+        private void botaoHome_Click(object sender, RoutedEventArgs e)
+        {
+            homePage();
+        }
+
+        private void profileBio_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (this.dados.Contas[this.dados.posConta].bio == "")
+            {
+                profileBio.Text = "Você não tem Bio :(";
             }
         }
     }

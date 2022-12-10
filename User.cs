@@ -12,5 +12,7 @@ namespace Twitter_2
         public string name { get; set; } = "";
         public string password { get; set; } = "";
         public string bio { get; set; } = "";
+        public string wallpaper { get; set; } = "";
+        public string avatar { get; set; } = "";
     }
 }
