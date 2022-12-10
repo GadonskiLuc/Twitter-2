@@ -10,6 +10,8 @@ namespace Twitter_2
 {
     public class Dados
     {
+        //simula um banco de dados pq eu n consegui aprender a fazer o app
+        //se comunicar com um banco real kkkj (tristeza)
         public string user { get; set; } = "";
         public string name { get; set; } = "";
         public string password { get; set; } = "";

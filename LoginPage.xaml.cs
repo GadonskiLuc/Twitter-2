@@ -20,6 +20,7 @@ namespace Twitter_2
     /// </summary>
     public partial class LoginPage : Page
     {
+        //pagina de login
         int posConta = 0;
 
         string pWord;
@@ -35,6 +36,8 @@ namespace Twitter_2
         {
             InitializeComponent();
             this.dados = dados;
+            /*
+                Cria uma conta para testes
             this.dados.Contas.Add(new User()
             {
                 username = "lucas",
@@ -42,35 +45,12 @@ namespace Twitter_2
                 password = "123",
                 bio = ""
             });
-            
+            */
         }
 
-        private void entradaUsuario_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            this.user = entradaUsuario.Text;
+        //métodos a seguir são todos com função importantes pro programa
 
-        }
-        private void entradaSenha_TextChanged(object sender, RoutedEventArgs e)
-        {
-            this.pWord = entradaSenha.Password;
-        }
-
-        private void zerarInput1(object sender, MouseButtonEventArgs e)
-        {
-            if (entradaUsuario.Text == "Usuário")
-            {
-                entradaUsuario.Text = "";
-            }
-        }
-
-        private void zerarInput2(object sender, MouseButtonEventArgs e)
-        {
-            if (entradaSenha.Password == "Senha")
-            {
-                entradaSenha.Password = "";
-            }
-        }
-
+        //Logar
         private void botaoEntrar_Click(object sender, RoutedEventArgs e)
         {
             bool achou = false;
@@ -101,6 +81,145 @@ namespace Twitter_2
                 string titulo = "Login";
                 MessageBoxButton botao = MessageBoxButton.OK;
                 MessageBox.Show(mensagem, titulo, botao);
+            }
+        }
+        //abre a aba de cadastro
+        private void criarConta_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            entradaNome.IsEnabled = true;
+            entradaNome.Visibility = Visibility.Visible;
+            botaoEntrar.IsEnabled = false;
+            botaoEntrar.Visibility = Visibility.Hidden;
+            criarConta.Visibility = Visibility.Hidden;
+            botaoVoltar.Visibility = Visibility.Visible;
+
+            botaoCadastrar.IsEnabled = true;
+            botaoCadastrar.Visibility = Visibility.Visible;
+        }
+        //volta para a aba de Login
+        private void botaoVoltar_Click(object sender, RoutedEventArgs e)
+        {
+            entradaNome.IsEnabled = false;
+            entradaNome.Visibility = Visibility.Hidden;
+            botaoEntrar.IsEnabled = true;
+            botaoEntrar.Visibility = Visibility.Visible;
+            criarConta.Visibility = Visibility.Visible;
+            botaoVoltar.Visibility = Visibility.Hidden;
+
+            botaoCadastrar.IsEnabled = false;
+            botaoCadastrar.Visibility = Visibility.Hidden;
+        }
+        //botão de cadastro de conta
+        private void botaoCadastrar_Click(object sender, RoutedEventArgs e)
+        {
+            if (entradaNome.Text == "" || entradaUsuario.Text == "" || entradaSenha.Password == "" || entradaNome.Text == "Nome" || entradaUsuario.Text == "Usuário" || entradaSenha.Password == "Senha")
+            {
+                string msg = "Campos Vazios!!";
+                string title = "Login";
+                MessageBoxButton btn = MessageBoxButton.OK;
+                MessageBoxImage icn = MessageBoxImage.Exclamation;
+                MessageBox.Show(msg, title, btn, icn, MessageBoxResult.OK);
+            }
+            else
+            {
+                bool achou = false;
+                for (int x = 0; x < this.dados.Contas.Count; x++)
+                {
+                    if (this.dados.Contas[x].username == this.user)
+                    {
+                        achou = true;
+                        break;
+                    }
+                }
+
+                if (achou)
+                {
+                    string msg = "Conta já existente!";
+                    string title = "Cadastro";
+                    MessageBoxButton btn = MessageBoxButton.OK;
+                    MessageBoxImage icn = MessageBoxImage.Exclamation;
+                    MessageBox.Show(msg, title, btn, icn, MessageBoxResult.OK);
+                }
+                else
+                {
+                    string mensagem = "Desejas criar essa conta?";
+                    string titulo = "Login";
+                    MessageBoxButton botao = MessageBoxButton.YesNo;
+                    MessageBoxImage icon = MessageBoxImage.Question;
+                    MessageBoxResult result;
+                    result = MessageBox.Show(mensagem, titulo, botao, icon, MessageBoxResult.Yes);
+
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        this.dados.Contas.Add(new User
+                        {
+                            name = this.name,
+                            username = this.user,
+                            password = this.pWord
+                        });
+
+                        entradaNome.IsEnabled = false;
+                        entradaNome.Visibility = Visibility.Hidden;
+                        botaoEntrar.IsEnabled = true;
+                        botaoEntrar.Visibility = Visibility.Visible;
+
+                        botaoCadastrar.IsEnabled = false;
+                        botaoCadastrar.Visibility = Visibility.Hidden;
+
+                        botaoVoltar.Visibility = Visibility.Hidden;
+                        criarConta.Visibility = Visibility.Visible;
+
+                        entradaUsuario.Text = "Usuário";
+                        entradaSenha.Password = "Senha";
+                        entradaNome.Text = "Nome";
+                    }
+                    else
+                    {
+                        entradaNome.IsEnabled = false;
+                        entradaNome.Visibility = Visibility.Hidden;
+                        botaoEntrar.IsEnabled = true;
+                        botaoEntrar.Visibility = Visibility.Visible;
+
+                        botaoCadastrar.IsEnabled = false;
+                        botaoCadastrar.Visibility = Visibility.Hidden;
+
+                        botaoVoltar.Visibility = Visibility.Hidden;
+                        criarConta.Visibility = Visibility.Visible;
+
+                        entradaUsuario.Text = "Usuário";
+                        entradaSenha.Password = "Senha";
+                        entradaNome.Text = "Nome";
+                    }
+                }
+            }
+        }
+
+        //a partir daqui são apenas métodos com funções estéticas digamos assim
+        //ou seja, zerar um input quando está em foco, a animaçãozinha do criar conta e etc
+
+        private void entradaUsuario_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            this.user = entradaUsuario.Text;
+
+        }
+        private void entradaSenha_TextChanged(object sender, RoutedEventArgs e)
+        {
+            this.pWord = entradaSenha.Password;
+        }
+
+        private void zerarInput1(object sender, MouseButtonEventArgs e)
+        {
+            if (entradaUsuario.Text == "Usuário")
+            {
+                entradaUsuario.Text = "";
+            }
+        }
+
+        private void zerarInput2(object sender, MouseButtonEventArgs e)
+        {
+            if (entradaSenha.Password == "Senha")
+            {
+                entradaSenha.Password = "";
             }
         }
 
@@ -150,17 +269,6 @@ namespace Twitter_2
             this.name = entradaNome.Text;
         }
 
-        private void criarConta_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            entradaNome.IsEnabled= true;
-            entradaNome.Visibility= Visibility.Visible;
-            botaoEntrar.IsEnabled= false;
-            botaoEntrar.Visibility= Visibility.Hidden;
-
-            botaoCadastrar.IsEnabled= true;
-            botaoCadastrar.Visibility=Visibility.Visible;
-        }
-
         private void zerarInput3(object sender, RoutedEventArgs e)
         {
             if (entradaNome.Text == "Nome")
@@ -177,83 +285,6 @@ namespace Twitter_2
             }
         }
 
-        private void botaoCadastrar_Click(object sender, RoutedEventArgs e)
-        {
-            if(entradaNome.Text == "" || entradaUsuario.Text == "" || entradaSenha.Password == "" || entradaNome.Text == "Nome" || entradaUsuario.Text == "Usuário" || entradaSenha.Password == "Senha")
-            {
-                string msg = "Campos Vazios!!";
-                string title = "Login";
-                MessageBoxButton btn = MessageBoxButton.OK;
-                MessageBoxImage icn = MessageBoxImage.Exclamation;
-                MessageBox.Show(msg, title, btn, icn, MessageBoxResult.OK);
-            }
-            else
-            {
-                bool achou = false;
-                for(int x = 0; x < this.dados.Contas.Count; x++)
-                {
-                    if (this.dados.Contas[x].username == this.user)
-                    {
-                        achou = true;
-                        break;
-                    }
-                }
-
-                if (achou)
-                {
-                    string msg = "Conta já existente!";
-                    string title = "Cadastro";
-                    MessageBoxButton btn = MessageBoxButton.OK;
-                    MessageBoxImage icn = MessageBoxImage.Exclamation;
-                    MessageBox.Show(msg, title, btn, icn, MessageBoxResult.OK);
-                }
-                else
-                {
-                    string mensagem = "Desejas criar essa conta?";
-                    string titulo = "Login";
-                    MessageBoxButton botao = MessageBoxButton.YesNo;
-                    MessageBoxImage icon = MessageBoxImage.Question;
-                    MessageBoxResult result;
-                    result = MessageBox.Show(mensagem, titulo, botao, icon, MessageBoxResult.Yes);
-                    
-                    if (result == MessageBoxResult.Yes)
-                    {   
-                        this.dados.Contas.Add(new User { 
-                            name= this.name,
-                            username=this.user,
-                            password=this.pWord
-                        });
-
-                        entradaNome.IsEnabled = false;
-                        entradaNome.Visibility = Visibility.Hidden;
-                        botaoEntrar.IsEnabled = true;
-                        botaoEntrar.Visibility = Visibility.Visible;
-
-                        botaoCadastrar.IsEnabled = false;
-                        botaoCadastrar.Visibility = Visibility.Hidden;
-
-                        entradaUsuario.Text = "Usuário";
-                        entradaSenha.Password = "Senha";
-                        entradaNome.Text = "Nome";
-                    }
-                    else
-                    {
-                        entradaNome.IsEnabled = false;
-                        entradaNome.Visibility = Visibility.Hidden;
-                        botaoEntrar.IsEnabled = true;
-                        botaoEntrar.Visibility = Visibility.Visible;
-
-                        botaoCadastrar.IsEnabled = false;
-                        botaoCadastrar.Visibility = Visibility.Hidden;
-
-                        entradaUsuario.Text= "Usuário";
-                        entradaSenha.Password= "Senha";
-                        entradaNome.Text= "Nome";
-                    }
-                }
-            }
-        }
-
         private void entradaSenha_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.Key == Key.Enter)
@@ -266,5 +297,6 @@ namespace Twitter_2
                 }
             }
         }
+
     }
 }

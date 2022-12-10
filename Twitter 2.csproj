@@ -101,6 +101,7 @@
     <Compile Include="LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Tweet.cs" />
     <Compile Include="User.cs" />
     <Page Include="FeedPage.xaml">
       <SubType>Designer</SubType>

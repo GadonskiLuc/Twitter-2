@@ -28,7 +28,6 @@
         <Button x:Name="botaoHome" Content="       Home" HorizontalAlignment="Left" Margin="50,100,0,0" VerticalAlignment="Top" Height="55" Width="200" BorderBrush="Black" Background="{x:Null}" Foreground="White" FontSize="20" FontWeight="Bold" Click="botaoHome_Click" HorizontalContentAlignment="Left"/>
         <Button x:Name="botaoPerfil" Content="       Perfil" HorizontalAlignment="Left" Margin="50,180,0,0" VerticalAlignment="Top" Height="55" Width="200" BorderBrush="Black" Background="{x:Null}" Foreground="White" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Left" Click="botaoPerfil_Click"/>
         <Button x:Name="botaoSair" Content="       Sair" HorizontalAlignment="Left" Margin="50,260,0,0" VerticalAlignment="Top" Height="55" Width="200" BorderBrush="Black" Foreground="White" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Left" Background="{x:Null}" Click="botaoSair_Click"/>
-        <Button x:Name="botaoTweet" Content="Tweetar" HorizontalAlignment="Left" Margin="50,340,0,0" VerticalAlignment="Top" Height="55" Width="200" BorderBrush="Black" Background="#FF1DA1F2" Foreground="White" FontSize="20" FontWeight="Bold"/>
         <Rectangle x:Name="profileWallpaper" HorizontalAlignment="Left" Height="260" Margin="300,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="701" StrokeThickness="0.5" IsEnabled="False" Visibility="Hidden">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/shrekwallpaper.jpg"/>
@@ -57,12 +56,31 @@
                 <ImageBrush ImageSource="/b3b.gif" Stretch="Fill"/>
             </Ellipse.Fill>
         </Ellipse>
-        <TextBox x:Name="entradaNome" HorizontalAlignment="Left" Height="40" Margin="448,334,0,0" VerticalAlignment="Top" Width="350" Background="Black" BorderBrush="#FF3C3C3C" FontWeight="Bold" FontFamily="Arial" Foreground="White" TextChanged="entradaUsuario_TextChanged" TextWrapping="Wrap" MaxLines="1" MaxLength="22" SelectionBrush="White" VerticalContentAlignment="Bottom" AutomationProperties.HelpText="" BorderThickness="0.5,0.5,0.5,0.5" Text="Nome" TabIndex="-2" Padding="0,0,0,5" Visibility="Hidden"/>
+        <TextBox x:Name="entradaNome" HorizontalAlignment="Left" Height="40" Margin="448,334,0,0" VerticalAlignment="Top" Width="350" Background="Black" BorderBrush="#FF3C3C3C" FontWeight="Bold" FontFamily="Arial" Foreground="White" TextChanged="entradaUsuario_TextChanged" TextWrapping="Wrap" MaxLines="1" MaxLength="22" SelectionBrush="White" VerticalContentAlignment="Bottom" AutomationProperties.HelpText="" BorderThickness="0.5,0.5,0.5,0.5" Text="Nome" TabIndex="-2" Padding="0,0,0,5" Visibility="Hidden" LostFocus="entradaNome_LostFocus"/>
         <Label x:Name="nameEditing" Content="Nome" HorizontalAlignment="Left" Margin="451,339,0,0" VerticalAlignment="Top" Foreground="#FF3C3C3C" Height="18" Padding="0,0,0,0" FontSize="10" Visibility="Hidden"/>
         <TextBox x:Name="entradaBio" HorizontalAlignment="Left" Height="75" Margin="448,389,0,0" VerticalAlignment="Top" Width="350" Background="Black" BorderBrush="#FF3C3C3C" FontWeight="Bold" FontFamily="Arial" Foreground="White" TextChanged="entradaBio_TextChanged" TextWrapping="Wrap" MaxLines="1" MaxLength="150" SelectionBrush="White" AutomationProperties.HelpText="" BorderThickness="0.5,0.5,0.5,0.5" Text="Bio" TabIndex="-2" Padding="0,20,0,5" Visibility="Hidden" AcceptsReturn="True"/>
         <Label x:Name="bioEditing" Content="Bio" HorizontalAlignment="Left" Margin="451,394,0,0" VerticalAlignment="Top" Foreground="#FF3C3C3C" Height="18" Padding="0,0,0,0" FontSize="10" RenderTransformOrigin="0.485,0.922" Visibility="Hidden"/>
         <Button x:Name="botaoSalvar" Content="Salvar" HorizontalAlignment="Left" Margin="729,503,0,0" VerticalAlignment="Top" FontSize="18" BorderThickness="0,0,0,0" Foreground="White" Background="#FF1DA1F2" BorderBrush="#FF3C3C3C" Width="120" Height="40" Padding="1,1,1,1" Grid.IsSharedSizeScope="True" UseLayoutRounding="True" Click="botaoSalvar_Click" Visibility="Hidden"/>
         <Button x:Name="botaoCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="451,503,0,0" VerticalAlignment="Top" FontSize="18" BorderThickness="1,1,1,1" Foreground="White" Background="Black" BorderBrush="#FF3C3C3C" Width="120" Height="40" Click="botaoCancelar_Click" Visibility="Hidden"/>
         <Button x:Name="botaoAvatar" Content="+" HorizontalAlignment="Center" Margin="0,186,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="100" Foreground="White" Background="{x:Null}" FontWeight="Bold" FontFamily="Segoe UI Black" Height="100" Padding="0,0,0,15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="48" MouseEnter="botaoAvatar_MouseEnter" Click="botaoAvatar_Click" Visibility="Hidden"/>
+        <Rectangle x:Name="divisor" HorizontalAlignment="Left" Height="0.5" Margin="300,200,0,0" Stroke="White" VerticalAlignment="Top" Width="700" Fill="White"/>
+        <Ellipse x:Name="homeAvatar" HorizontalAlignment="Left" Height="70" Margin="331,48,0,0" Stroke="Black" VerticalAlignment="Top" Width="70" StrokeThickness="2" IsEnabled="False">
+            <Ellipse.Fill>
+                <ImageBrush ImageSource="/b3b.gif" Stretch="Fill"/>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Label x:Name="homeLabel" Content="Home" HorizontalAlignment="Left" Margin="331,6,0,0" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" FontSize="22"/>
+        <TextBox x:Name="entradaTweet" HorizontalAlignment="Left" Margin="423,48,0,0" TextWrapping="Wrap" Text="O que ta rolando?" VerticalAlignment="Top" Width="502" Background="Black" Foreground="White" Height="97" FontSize="24" BorderBrush="Black" SelectionBrush="{x:Null}" GotFocus="entradaTweet_GotFocus" LostFocus="entradaTweet_LostFocus"/>
+        <Button x:Name="botaoTweet" Content="Tweetar" HorizontalAlignment="Left" Margin="847,144,0,0" VerticalAlignment="Top" Height="38" Width="121" BorderBrush="Black" Background="#FF1DA1F2" Foreground="White" FontSize="20" FontWeight="Bold" Click="botaoTweet_Click"/>
+        <Label x:Name="comingSoon" Content="Coming Soon..." HorizontalAlignment="Left" Margin="505,326,0,0" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" FontSize="36"/>
+        <Label x:Name="comingSoon_Copy" Content="Leia o Markdown" HorizontalAlignment="Left" Margin="505,369,0,0" VerticalAlignment="Top" Foreground="#FF656565" FontWeight="Bold" FontSize="18"/>
+        <Button x:Name="botaoExcluir" Content="       Excluir Conta" HorizontalAlignment="Left" Margin="50,340,0,0" VerticalAlignment="Top" Height="55" Width="200" BorderBrush="Black" Background="{x:Null}" Foreground="White" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Left" Click="botaoExcluir_Click"/>
+        <Image HorizontalAlignment="Left" Height="25" Margin="50,355,0,0" VerticalAlignment="Top" Width="25" Source="/user.png">
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="/user.png" Stretch="Uniform"/>
+            </Image.OpacityMask>
+        </Image>
+        <Image HorizontalAlignment="Left" Height="10" Margin="70,355,0,0" VerticalAlignment="Top" Width="8" Source="/close.png"/>
+        <Button x:Name="botaoTweetar" Content="Tweetar" HorizontalAlignment="Left" Margin="50,340,0,0" VerticalAlignment="Top" Height="55" Width="200" BorderBrush="Black" Background="#FF1DA1F2" Foreground="White" FontSize="20" FontWeight="Bold" Click="botaoTweetar_Click"/>
     </Grid>
 </Page>
