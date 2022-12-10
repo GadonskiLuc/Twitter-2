@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Twitter_2
 {
@@ -12,7 +15,8 @@ namespace Twitter_2
         public string name { get; set; } = "";
         public string password { get; set; } = "";
         public string bio { get; set; } = "";
-        public string wallpaper { get; set; } = "";
-        public string avatar { get; set; } = "";
+        public ImageBrush wallpaper { get; set; }
+        public ImageBrush avatar { get; set; }
+
     }
 }
